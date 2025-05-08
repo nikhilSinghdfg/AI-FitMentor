@@ -30,13 +30,20 @@ function Header() {
   }, []);
 
   const getUserData = async () => {
-    const response = await axios.post("/api/users/me");
-    setData(response.data.data);
-    router.push("/authentications/Profile");
+    setIsMobileMenuOpen(false);
+    try {
+      const response = await axios.post("/api/users/me");
+      setData(response.data.data);
+      router.push("/authentications/Profile");
+    } catch (error) {
+      toast.error("Failed to fetch user data");
+    }
   };
+
 
   const logout = async (e) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
     try {
       await axios.get("/api/users/logout");
       toast.success("Logout successful");
@@ -47,8 +54,11 @@ function Header() {
   };
 
   const verifyEmail = () => {
+    setIsMobileMenuOpen(false);
     router.push("/authentications/verifyemail");
   };
+
+  const userInitial = data?.username?.charAt(0)?.toUpperCase() || 'A';
 
   return (
     <header className="shadow fixed w-full top-0 z-10 bg-white">
@@ -77,7 +87,7 @@ function Header() {
               className="rounded-full cursor-pointer w-9 h-9 flex justify-center items-center text-white text-xl bg-red-800"
               onClick={toggleDropdown}
             >
-              A
+              {userInitial}
             </div>
 
             {isDropdownOpen && (

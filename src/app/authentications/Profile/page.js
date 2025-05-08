@@ -1,41 +1,37 @@
 'use client';
-import React from 'react'
-import { useAppContext } from '@/app/userContext/page'
-import { useRouter } from 'next/navigation'
+import React from 'react';
+import { useAppContext } from '@/app/userContext/page';
+import { useRouter } from 'next/navigation';
 
+function Page() {
+  const { data } = useAppContext();
+  const router = useRouter();
 
-function page() {
-
-  const { data, setData } = useAppContext()
-
-  const router = useRouter()
-
-  const gethomepage = async () => {
-    router.push("/pages/Dashboard")
-  }
-
- 
+  const getHomepage = () => {
+    router.push("/pages/Dashboard");
+  };
 
   return (
-    <div className='fixed top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-white flex  justify-center items-center'>
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-white/60 backdrop-blur-md p-4">
+      <div className="relative w-full max-w-sm md:max-w-md bg-white rounded-xl shadow-lg border border-gray-300 px-6 pt-10 pb-6">
+        {/* Close Button */}
+        <button
+          onClick={getHomepage}
+          className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-xl font-bold focus:outline-none"
+          aria-label="Close"
+        >
+          ✕
+        </button>
 
-      <div className=' h-[250px] w-[290px] rounded-sm  bg-white border-2 border-black'>
-
-
-        <button onClick={gethomepage} className='absolute cursor-pointer left-[470px] mt-3 ml-[400px] font-bold w-4 text-black' >X</button>
-
-        <h1 className='text-black p-2 pt-9 '>NAME:{data.username}</h1>
-        <h1 className='text-black p-2 pt-9 '>EMAIL:{data.email}</h1>
-
-
-
-
+        {/* User Info */}
+        <h1 className="text-xl font-semibold text-gray-900 mb-6 text-center">User Details</h1>
+        <div className="space-y-4 text-gray-800">
+          <p><span className="font-medium">Name:</span> {data?.username}</p>
+          <p><span className="font-medium">Email:</span> {data?.email}</p>
+        </div>
       </div>
-
     </div>
-
-
-  )
+  );
 }
 
-export default page
+export default Page;
