@@ -8,15 +8,7 @@ import axios from "axios";
 import { useAppContext } from "@/app/userContext/page";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from 'uuid';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogFooter,
-    DialogOverlay,
-} from "@/components/ui/dialog";
+import { Dialog } from '@headlessui/react';
 import {
     Select,
     SelectContent,
@@ -119,106 +111,16 @@ function AddNewInterview() {
 
 
     return (
-        /*    <div>
-                <div
-                    className="h-[120px] bg-secondary border rounded-lg hover:scale-105 hover:shadow-6xl cursor-pointer transition-all"
-                    onClick={() => setDialogOpen(true)}
-                >
-                    <h2 className="text-lg flex justify-center pt-[40px] font-semibold text-black">
-                        + Add New
-                    </h2>
-                </div>
-    
-    
-                <Dialog open={dialogOpen} >
-                    <DialogContent className="bg-white w-full fixed top-[130px] left-2 sm:left-4 md:left-8 lg:left-[500px]">
-                        <DialogHeader>
-                            <DialogTitle className="text-xl font-semibold text-black">Customize Your Language Learning Journey</DialogTitle>
-                            <DialogDescription className="text-sm text-gray-900">
-                                <form onSubmit={onsubmit}>
-                                    <div>
-    
-                                        <h1>Let's personalize your learning journey—just fill out the form below.</h1>
-    
-                                        <div className="mt-7 my-4 flex flex-row">
-                                            <label className="mt-1 mr-9">Job Role/Job position:</label>
-                                            <Select onValueChange={setLanguage} >
-                                                <SelectTrigger className="w-[200px] mb-3">
-                                                    <SelectValue placeholder="Select a language" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    <SelectItem value="English" >English</SelectItem>
-                                                    <SelectItem value="French">French</SelectItem>
-                                                    <SelectItem value="Japanese">Japanese</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-    
-                                        </div>
-    
-                                        <div className="my-2 flex flex-row">
-                                            <label className="mt-2 mr-4 ">What’s your current level:</label>
-                                            <Select onValueChange={setLevel}>
-    
-                                                <SelectTrigger className="w-[200px] mb-3 ">
-                                                    <SelectValue placeholder="Select a level" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    <SelectItem value="Beginner" >Beginner </SelectItem>
-                                                    <SelectItem value="Intermediate">Intermediate </SelectItem>
-                                                    <SelectItem value="Advanced ">Advanced </SelectItem>
-                                                </SelectContent>
-    
-                                            </Select>
-                                        </div>
-    
-                                        <div className=" my-2 flex flex-row  ">
-                                            <label className="mt-2 mr-10">Select a learning role:</label>
-                                            <Select onValueChange={setRole}>
-    
-                                                <SelectTrigger className="w-[200px] mb-3 ">
-                                                    <SelectValue placeholder="Select your learning role" />
-                                                </SelectTrigger>
-                                                <SelectContent>
-                                                    <SelectItem value="teacher-student">Teacher-Student (Structured Learning) </SelectItem>
-                                                    <SelectItem value="Parent–Child">Parent–Child (Casual Conversation) </SelectItem>
-                                                    <SelectItem value="interviewer-interviewee ">Interviewer-Interviewee (Formal Practice) </SelectItem>
-                                                </SelectContent>
-    
-                                            </Select>
-    
-                                        </div>
-                                    </div>
-    
-    
-    
-                                    <div className="flex gap-5 justify-end">
-                                        <Button type="button" onClick={() => setDialogOpen(false)} variant="ghost" className="bg-gray-200 hover:bg-gray-300 cursor-pointer">
-                                            Cancel
-                                        </Button>
-    
-                                        <Button type="submit" className="bg-blue-600 text-white hover:bg-blue-700 cursor-pointer">
-                                            Generating form AI
-                                        </Button>
-                                    </div>
-                                </form>
-                            </DialogDescription>
-                        </DialogHeader>
-                    </DialogContent>
-                </Dialog>
-            </div>
-    
-            */
+
         <div>
-            <div
-                className="h-[120px] bg-secondary border rounded-lg hover:scale-105 hover:shadow-6xl cursor-pointer transition-all"
-                onClick={() => setDialogOpen(true)}
-            >
-                <h2 className="text-lg flex justify-center pt-[40px] font-semibold text-black">
-                    + Add New
+
+            <div onClick={() => setDialogOpen(true)}>
+                <h2>
+                    Get Started
                 </h2>
             </div>
 
-            <Dialog open={dialogOpen}>
+            {/* <Dialog open={dialogOpen}>
                 <DialogContent
                     className="bg-white w-[90%] max-w-xl mx-auto rounded-lg p-6 shadow-xl"
                     style={{
@@ -302,9 +204,92 @@ function AddNewInterview() {
                     </DialogHeader>
                 </DialogContent>
             </Dialog>
+*/}
 
-        </div>
 
+
+            <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} className="relative z-50">
+                {/* Background overlay */}
+                <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+                {/* Dialog panel */}
+                <div className="fixed inset-0 flex items-center justify-center p-4">
+                    <Dialog.Panel className="bg-white w-full max-w-xl rounded-lg p-6 shadow-xl">
+                        <Dialog.Title className="text-xl font-semibold text-black">
+                            Customize Your Language Learning Journey
+                        </Dialog.Title>
+                        <Dialog.Description className="text-sm text-gray-900 mb-4">
+                            Let’s personalize your learning journey—just fill out the form below.
+                        </Dialog.Description>
+
+                        <form onSubmit={onsubmit}>
+                            <div className="my-7 flex flex-col md:flex-row md:items-center">
+                                <label className="mb-1 md:mb-0 md:mr-4">Job Role/Job Position:</label>
+                                <select onChange={(e) => setLanguage(e.target.value)} className="w-full md:w-[200px] ml-9 mb-3 mt-3">
+                                    <option value="">Select a language</option>
+                                    <option value="English">English</option>
+                                    <option value="French">French</option>
+                                    <option value="Japanese">Japanese</option>
+                                </select>
+                            </div>
+
+                            <div className="my-7 flex flex-col md:flex-row md:items-center">
+                                <label className="mb-1 md:mb-0 md:mr-4">What’s your current level:</label>
+                                <select onChange={(e) => setLevel(e.target.value)} className="w-full md:w-[200px] ml-4 mb-3 mt-3">
+                                    <option value="">Select a level</option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </div>
+
+                            <div className="my-7 flex flex-col md:flex-row md:items-center">
+                                <label className="mb-1 md:mb-0 md:mr-4">Select a learning role:</label>
+                                <select onChange={(e) => setRole(e.target.value)} className="w-full md:w-[200px] mb-3 ml-11 mt-3">
+                                    <option value="">Select your learning role</option>
+                                    <option value="teacher-student">Teacher-Student (Structured Learning)</option>
+                                    <option value="Parent–Child">Parent–Child (Casual Conversation)</option>
+                                    <option value="interviewer-interviewee">Interviewer-Interviewee (Formal Practice)</option>
+                                </select>
+                            </div>
+
+                            <div className="flex justify-end gap-4 mt-6">
+                                <button
+                                    type="button"
+                                    onClick={() => setDialogOpen(false)}
+                                    className="bg-gray-200 hover:bg-gray-300 cursor-pointer px-4 py-2 rounded-lg"
+                                >
+                                    Cancel
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    className="bg-blue-600 text-white hover:bg-blue-700 cursor-pointer px-4 py-2 rounded-lg"
+                                >
+                                    Generate Form with AI
+                                </button>
+                            </div>
+                        </form>
+                    </Dialog.Panel>
+                </div>
+            </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div >
 
 
     )
