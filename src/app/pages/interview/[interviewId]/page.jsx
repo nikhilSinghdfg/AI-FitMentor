@@ -84,7 +84,23 @@ function Interview() {
     setLoading(true);
     resetTranscript();
 
-    const inputPrompt = `Language: ${language}, Level: ${level}, Role: ${role}, You are an AI language partner. Engage in a continuous conversation with the user in ${language} at a ${level} level in a ${role} setting. Always reply in ${language} and help the user improve fluency, confidence, and accuracy.`;
+    const inputPrompt = `Language:
+     ${language}, Level: ${level}, Role: ${role}, You are an AI 
+     language partner. Engage in a continuous conversation with the 
+     user in ${language} at a ${level} level in a ${role} setting. Always
+      reply in ${language} and help the user improve fluency, confidence, and accuracy.`;
+
+
+      const InputPrompt =
+            "Language: " + language +
+            " , Level: " + level +
+            " , Role: " + role +
+            " , You are an AI language partner. Engage in a continuous conversation with the user in " + language +
+            " at a " + level + " level in a " + role + " setting." +
+            " Do not follow a question-and-answer format. Instead, have a natural back-and-forth conversation." +
+            " If the user makes grammar or pronunciation mistakes, correct them politely and continue the conversation." +
+            " Always reply in " + language + " and help the user improve fluency, confidence, and accuracy. in JSON Format";
+
 
     try {
       const result = await axios.post('/api/users/interact-ai', {
@@ -306,7 +322,20 @@ function Interview() {
     setLoading(true);
     resetTranscript();
 
-    const inputPrompt = `Language: ${language}, Level: ${level}, Role: ${role}, You are an AI language partner. Engage in a continuous conversation with the user in ${language} at a ${level} level in a ${role} setting. Always reply in ${language} and help the user improve fluency, confidence, and accuracy.`;
+    {/*
+      const inputPrompt = `Language: ${language}, Level: ${level}, Role: ${role}, You are an AI language partner. Engage in a continuous conversation with the user in ${language} at a ${level} level in a ${role} setting. Always reply in ${language} and help the user improve fluency, confidence, and accuracy.`;
+*/}
+
+    const inputPrompt = `
+Language: ${language}, Level: ${level}, Role: ${role},
+You are an AI language partner. Engage in a continuous conversation with the user in ${language} at a ${level} level in a ${role} setting.
+Do not follow a question-and-answer format. Instead, have a natural back-and-forth conversation.
+If the user makes grammar or pronunciation mistakes, correct them politely and continue the conversation.
+Always reply in ${language} and help the user improve fluency, confidence, and accuracy.
+`;
+
+
+
 
     try {
       const result = await axios.post('/api/users/interact-ai', {
