@@ -9,33 +9,6 @@ function page() {
     <div>
       <Header />
 
-
-      {/*    <main className='bg-white h-[650px]  pt-[60px]'>
-        <div>
-
-          <div className="p-10 ">
-
-            <h2 className="font-bold text-2xl">Dashboard</h2>
-            <h2 className="text-gray-500">Create and Begin Your AI-Powered Language Chat</h2>
-
-
-            <div className="grid grid-cols-1  md:grid-cols-3 my-5">
-
-              <AddNewInterview />
-
-
-            </div>
-
-
-
-          </div>
-
-
-
-        </div>
-      </main>
-*/}
-
       <div className='bg-gray-50 text-gray-800'>
         <main className="max-w-7xl mx-auto px-6 py-16 sm:py-24">
           <section className="flex flex-col-reverse lg:flex-row items-center gap-12">
@@ -53,9 +26,9 @@ function page() {
                   className="inline-block px-8 py-3 bg-indigo-600 text-white rounded-md font-semibold shadow-md hover:bg-indigo-700 transition"
                   href="#how-it-works"
                 >
-                    <AddNewInterview />
+                  <AddNewInterview />
                 </a>
-          
+
               </div>
             </div>
             <div className="lg:w-1/2 max-w-lg">
