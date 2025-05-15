@@ -148,7 +148,7 @@ function page() {
                     width="200"
                   />
                 </div>
-                <div className="sm:w-2/3 text-left">
+                <div className="sm:w-2/3 pb-5 text-left">
                   <h3 className="text-xl font-semibold mb-2">Track Your Progress</h3>
                   <p className="text-gray-700">
                     Review your learning stats and set goals to stay motivated and
