@@ -140,7 +140,7 @@ function AddNewInterview() {
                         <form onSubmit={onsubmit}>
                             <div className="my-7 flex flex-col md:flex-row md:items-center">
                                 <label className="mb-1 md:mb-0 md:mr-4">Job Role/Job Position:</label>
-                                <select onChange={(e) => setLanguage(e.target.value)} className="w-full md:w-[200px] ml-9 mb-3 mt-3">
+                                <select onChange={(e) => setLanguage(e.target.value)} className="w-full md:w-[200px] ml-3 mb-3 mt-3">
                                     <option value="">Select a language</option>
                                     <option value="English">English</option>
                                     <option value="French">French</option>
@@ -150,7 +150,7 @@ function AddNewInterview() {
 
                             <div className="my-7 flex flex-col md:flex-row md:items-center">
                                 <label className="mb-1 md:mb-0 md:mr-4">What’s your current level:</label>
-                                <select onChange={(e) => setLevel(e.target.value)} className="w-full md:w-[200px] ml-4 mb-3 mt-3">
+                                <select onChange={(e) => setLevel(e.target.value)} className="w-full md:w-[200px] ml-3 mb-3 mt-3">
                                     <option value="">Select a level</option>
                                     <option value="Beginner">Beginner</option>
                                     <option value="Intermediate">Intermediate</option>
@@ -160,7 +160,7 @@ function AddNewInterview() {
 
                             <div className="my-7 flex flex-col md:flex-row md:items-center">
                                 <label className="mb-1 md:mb-0 md:mr-4">Select a learning role:</label>
-                                <select onChange={(e) => setRole(e.target.value)} className="w-full md:w-[200px] mb-3 ml-11 mt-3">
+                                <select onChange={(e) => setRole(e.target.value)} className="w-full md:w-[200px] mb-3 ml-3 mt-3">
                                     <option value="">Select your learning role</option>
                                     <option value="teacher-student">Teacher-Student (Structured Learning)</option>
                                     <option value="Parent–Child">Parent–Child (Casual Conversation)</option>
