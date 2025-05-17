@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { toast } from 'sonner';
 
 
 
@@ -24,11 +24,11 @@ function page() {
             setLoading(true);
             const response = await axios.post("/api/users/login", user);
             console.log("Login success", response.data);
-            toast.success("Login success");
+            toast('Login successfully');
             router.push("/pages/Dashboard");
         } catch (error) {
             console.log("Login failed", error.message);
-            toast.error(error.message);
+            toast("Login failed");
         } finally {
             setLoading(false);
         }
@@ -75,8 +75,8 @@ function page() {
                         className='outline-none text-sm'
                         placeholder='Password'
                         value={user.password}
-                        onChange={(e) => setUser({...user, password: e.target.value})}
-            
+                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+
 
                     />
                 </div>

@@ -7,15 +7,13 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
 
   const [data, setData] = useState('')
-  const [savedconvId, setsavedconvId] = useState(null)
+  const [saveduserId, setsaveduserId] = useState(null)
   const [conersationData, setconersationData] = useState(null);
 
 
-
   const value = {
-    data, setData, savedconvId, setsavedconvId, conersationData, setconersationData
+    data, setData, saveduserId, setsaveduserId, conersationData, setconersationData
   }
-
   return (
     <AppContext.Provider value={value}>
       {children}
